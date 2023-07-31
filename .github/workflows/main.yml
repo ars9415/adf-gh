@@ -31,7 +31,7 @@ jobs:
 
     - name: Finding path of the required arm templates
       run: |
-        pwd
+        git branch --all
         ls
         
 #     - name: data-factory-deploy
