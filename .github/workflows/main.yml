@@ -31,8 +31,7 @@ jobs:
 
     - name: Finding path of the required arm templates
       run: |
-        git checkout remotes/origin/main
-        ls
+        cd .
         
 #     - name: data-factory-deploy
 #       uses: Azure/data-factory-deploy-action@v1.2.0
