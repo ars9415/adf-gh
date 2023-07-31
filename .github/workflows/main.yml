@@ -35,8 +35,4 @@ jobs:
         name: my-artifact
         path: ${{ steps.export.outputs.arm-template-directory }}
         if-no-files-found: error
-    - name: upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: arm-template-directory
-        path: ${{github.workspace}}/ExportedArmTemplate
+   
