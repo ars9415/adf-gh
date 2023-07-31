@@ -31,7 +31,7 @@ jobs:
 
     - name: Finding path of the required arm templates
       run: |
-        git branch -a
+        git checkout remotes/origin/main
         ls
         
 #     - name: data-factory-deploy
