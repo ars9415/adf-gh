@@ -32,7 +32,7 @@ jobs:
     - name: Deploy to QA env
       run: |
         az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        az deployment group create --resource-group new-rg --template-file ./ARMTemplateForFactory.json --parameters ./ARMTemplateForFactory.json
+        az deployment group create --resource-group new-rg --template-file ARMTemplateForFactory.json --parameters ARMTemplateForFactory.json
       
   
 
