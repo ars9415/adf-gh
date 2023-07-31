@@ -21,18 +21,22 @@ jobs:
     - name: install ADF Utilities package
       run: npm install
       working-directory: ${{github.workspace}}
-        
-    - name: Validate
-      run: npm run build validate ${{github.workspace}}/ADFroot/build/package.json/subscriptions/c2d0d8a1-a785-4555-8962-c892e35d01ca/resourceGroups/new-rg/providers/Microsoft.DataFactory/factories/adf-gh-actions 
-      working-directory: ${{github.workspace}}
- 
+    
+    - name: Export ARM Template
+      id: export
+      uses: Azure/data-factory-export-action@v1.2.0
+      # with:
+      #   path: ./mydir [optional]
+      #   id: <data factory resource ID> [optional]
 
-    - name: Validate and Generate ARM template
-      run: npm run build export ${{github.workspace}}/publish_config.json/subscriptions/c2d0d8a1-a785-4555-8962-c892e35d01ca/resourceGroups/new-rg/providers/Microsoft.DataFactory/factories/adf-gh-actions "ExportedArmTemplate"  
-      working-directory: ${{github.workspace}}
-  
+    - name: Publish ARM template
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: ${{ steps.export.outputs.arm-template-directory }}
+        if-no-files-found: error
     - name: upload artifact
       uses: actions/upload-artifact@v3
       with:
         name: ExportedArmTemplate
-        path: ${{github.workspace}}/ADFroot/build/ExportedArmTemplate
+        path: ${{github.workspace}}/ExportedArmTemplate
