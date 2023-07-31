@@ -39,4 +39,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ExportedArmTemplate
-        path: ${{github.workspace}}/ExportedArmTemplate
+        path: ${{github.workspace}}
