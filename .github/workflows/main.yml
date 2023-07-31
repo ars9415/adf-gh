@@ -23,8 +23,8 @@ jobs:
       working-directory: ${{github.workspace}}/ADFroot/build  
         
     - name: Validate
-      run: npm run build validate ${{github.workspace}}/ADFroot/build /subscriptions/c2d0d8a1-a785-4555-8962-c892e35d01ca/resourceGroups/new-rg/providers/Microsoft.DataFactory/factories/adf-gh-actions 
-      working-directory: ${{github.workspace}}/ADFroot/build
+      run: npm run build validate ${{github.workspace}}/subscriptions/c2d0d8a1-a785-4555-8962-c892e35d01ca/resourceGroups/new-rg/providers/Microsoft.DataFactory/factories/adf-gh-actions 
+      working-directory: ${{github.workspace}}
  
 
     - name: Validate and Generate ARM template
