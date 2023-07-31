@@ -38,5 +38,5 @@ jobs:
     - name: upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: ExportedArmTemplate
-        path: ${{github.workspace}}
+        name: arm-template-directory
+        path: ${{github.workspace}}/ExportedArmTemplate
