@@ -17,21 +17,21 @@ jobs:
       with:
         node-version: 14.x
         
-    - name: install ADF Utilities package
-      run: npm install
-      working-directory: ${{github.workspace}}
+#     - name: install ADF Utilities package
+#       run: npm install
+#       working-directory: ${{github.workspace}}
       
-    - name: Login via Az module
-      uses: azure/login@v1
-      with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        enable-AzPSSession: true 
+#     - name: Login via Az module
+#       uses: azure/login@v1
+#       with:
+#         client-id: ${{ secrets.AZURE_CLIENT_ID }}
+#         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+#         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+#         enable-AzPSSession: true 
 
     - name: Finding path of the required arm templates
       run: |
-        git branch --all
+        git checkout
         ls
         
 #     - name: data-factory-deploy
