@@ -31,7 +31,7 @@ jobs:
 
     - name: Finding path of the required arm templates
       run: |
-        git checkout adf_publish
+        git branch -a
         ls
         
 #     - name: data-factory-deploy
