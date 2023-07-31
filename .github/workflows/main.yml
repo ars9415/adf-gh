@@ -59,7 +59,7 @@ jobs:
         uses: Azure/data-factory-deploy-action@v1.2.0
         with:
           resourceGroupName: new-rg
-          dataFactoryName: adf-gh-actions-2
+          dataFactoryName: ad-gh-actions-2
           armTemplateFile: ARMTemplateForFactory.json
           armTemplateParametersFile: ARMTemplateParametersForFactory.json
           # additionalParameters: # (10) Parameters which will be replaced in the ARM template. Expecte
