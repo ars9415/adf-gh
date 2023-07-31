@@ -1,14 +1,13 @@
 on:
   push:
     branches:
-    - adf_publish
-
+    - main
 permissions:
       id-token: write
       contents: read
 
 jobs:
-  build:
+  deploy-to-qa:
     runs-on: ubuntu-latest
     steps:
 
@@ -21,46 +20,25 @@ jobs:
     - name: install ADF Utilities package
       run: npm install
       working-directory: ${{github.workspace}}
-    
-    - name: Export ARM Template
-      id: export
-      uses: Azure/data-factory-export-action@v1.2.0
-      # with:
-      #   path: ./mydir [optional]
-      #   id: <data factory resource ID> [optional]
-
-    - name: Publish ARM template
-      uses: actions/upload-artifact@v2
+      
+    - name: Login via Az module
+      uses: azure/login@v1
       with:
-        name: my-artifact
-        path: ${{ steps.export.outputs.arm-template-directory }}
-        if-no-files-found: error
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        enable-AzPSSession: true 
+
+    - name: Deploy to QA env
+      run: |
+        az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        az deployment group create --resource-group new-rg --template-file ./ARMTemplateForFactory.json --parameters ./ARMTemplateForFactory.json
+      
+  
+
+
         
         
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:    
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v3.0.2
-        with:
-          name: my-artifact
+  
 
 
-      - name: Login via Az module
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          enable-AzPSSession: true 
-
-      - name: data-factory-deploy
-        uses: Azure/data-factory-deploy-action@v1.2.0
-        with:
-          resourceGroupName: new-rg
-          dataFactoryName: ad-gh-actions-2
-          armTemplateFile: ARMTemplateForFactory.json
-          armTemplateParametersFile: ARMTemplateParametersForFactory.json
-          # additionalParameters: # (10) Parameters which will be replaced in the ARM template. Expecte
-   
