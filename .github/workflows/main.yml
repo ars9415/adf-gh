@@ -29,13 +29,18 @@ jobs:
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         enable-AzPSSession: true 
 
-    - name: data-factory-deploy
-      uses: Azure/data-factory-deploy-action@v1.2.0
-      with:
-        resourceGroupName: new-rg
-        dataFactoryName: ad-gh-actions-2
-        armTemplateFile: ARMTemplateForFactory.json
-        armTemplateParametersFile: ARMTemplateParametersForFactory.json
+    - name: Finding path of the required arm templates
+      run: |
+        pwd
+        ls
+        
+#     - name: data-factory-deploy
+#       uses: Azure/data-factory-deploy-action@v1.2.0
+#       with:
+#         resourceGroupName: new-rg
+#         dataFactoryName: ad-gh-actions-2
+#         armTemplateFile: ARMTemplateForFactory.json
+#         armTemplateParametersFile: ARMTemplateParametersForFactory.json
   
 
 
