@@ -10,37 +10,33 @@ jobs:
   deploy-to-qa:
     runs-on: ubuntu-latest
     steps:
-
-    - uses: actions/checkout@v3
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v3.4.1
-      with:
-        node-version: 14.x
+    - name: Checking out the repo
+      uses: actions/checkout@v3
+#     - name: Setup Node.js environment
+#       uses: actions/setup-node@v3.4.1
+#       with:
+#         node-version: 14.x
         
 #     - name: install ADF Utilities package
 #       run: npm install
 #       working-directory: ${{github.workspace}}
       
-#     - name: Login via Az module
-#       uses: azure/login@v1
-#       with:
-#         client-id: ${{ secrets.AZURE_CLIENT_ID }}
-#         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-#         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-#         enable-AzPSSession: true 
+    - name: Login via Az module
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        enable-AzPSSession: true 
 
-    - name: Finding path of the required arm templates
-      run: |
-        cd work
-        pwd
-        ls
-#     - name: data-factory-deploy
-#       uses: Azure/data-factory-deploy-action@v1.2.0
-#       with:
-#         resourceGroupName: new-rg
-#         dataFactoryName: ad-gh-actions-2
-#         armTemplateFile: ARMTemplateForFactory.json
-#         armTemplateParametersFile: ARMTemplateParametersForFactory.json
+
+    - name: data-factory-deploy
+      uses: Azure/data-factory-deploy-action@v1.2.0
+      with:
+        resourceGroupName: new-rg
+        dataFactoryName: ad-gh-actions-2
+        armTemplateFile: adf-gh-actions/ARMTemplateForFactory.json
+        armTemplateParametersFile: adf-gh-actions/ARMTemplateParametersForFactory.json
   
 
 
