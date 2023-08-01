@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checking out the repo
       uses: actions/checkout@v3
+    - name: Checking out the repo
+      uses: actions/checkout@adf_publish
 #     - name: Setup Node.js environment
 #       uses: actions/setup-node@v3.4.1
 #       with:
