@@ -24,7 +24,7 @@ jobs:
       run: |
         cd /home/runner/work/adf-gh
         ls
-        cd /adf-gh
+        cd adf-gh
         ls
 #     - name: install ADF Utilities package
 #       run: npm install
