@@ -23,7 +23,7 @@ jobs:
 #         node-version: 14.x
     - name: Finding path  
       run: |
-        cd /home/runner/work/adf-gh/adf-gh/adf_publish
+        cd /home/runner/work/adf-gh/adf-gh/adf_publish/adf-gh-actions
         ls
         pwd
 #     - name: install ADF Utilities package
