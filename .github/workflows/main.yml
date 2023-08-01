@@ -31,7 +31,7 @@ jobs:
 
     - name: Finding path of the required arm templates
       run: |
-        cd . .
+        cd . 
         pwd
         ls
 #     - name: data-factory-deploy
