@@ -35,8 +35,8 @@ jobs:
       with:
         resourceGroupName: new-rg
         dataFactoryName: ad-gh-actions-2
-        armTemplateFile: adf-gh-actions/ARMTemplateForFactory.json
-        armTemplateParametersFile: adf-gh-actions/ARMTemplateParametersForFactory.json
+        armTemplateFile: ${{ github.workspace }}/ARMTemplateForFactory.json
+        armTemplateParametersFile: ${{ github.workspace }}/ARMTemplateParametersForFactory.json
   
 
 
