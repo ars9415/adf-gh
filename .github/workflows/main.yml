@@ -44,8 +44,8 @@ jobs:
       with:
         resourceGroupName: new-rg
         dataFactoryName: ad-gh-actions-2
-        armTemplateFile: /adf_publish/adf-gh-actions/ARMTemplateForFactory.json
-        armTemplateParametersFile: /adf_publish/adf-gh-actions/ARMTemplateParametersForFactory.json
+        armTemplateFile: /home/runner/work/adf-gh/adf-gh/adf_publish/adf-gh-actions/ARMTemplateForFactory.json
+        #armTemplateParametersFile: /adf_publish/adf-gh-actions/ARMTemplateParametersForFactory.json
   
 
 
